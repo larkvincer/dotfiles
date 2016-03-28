@@ -45,7 +45,8 @@ rm Release.key
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 # Unity-tweak-tool
-sudo apt -y intall unity-tweak-tool
+sudo apt -y install unity-tweak-tool 
+
 
 # Installing dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
@@ -60,11 +61,11 @@ cd ~ \
 && wget -O - -c --no-check-certificate --no-cookies \
 --header "Cookie: oraclelicense=accept-securebackup-cookie" \
 http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz \
-| tar -xzf -\
-&& sudo mv ./jdk1.8.0_102 opt/ 
+| tar -xzf - \
+&& sudo mv jdk1.8.0_102 /opt
 echo "# Java path" >> ~/.bashrc
 echo 'export JAVA_HOME=/opt/jdk1.8.0_102' >> ~/.bashrc
-echo 'export PATH="$JAVA_HOME:/bin/:$PATH"' >> ~/.bashrc
+echo 'export PATH="$JAVA_HOME/bin/:$PATH"' >> ~/.bashrc
 
 # Installing sublime text 3
 cd ~
