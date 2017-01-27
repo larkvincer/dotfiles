@@ -19,6 +19,9 @@ sudo apt -y install redshift
 # Git
 sudo apt -y install git
 
+# Inkscape
+sudo apt -y install inkscape
+
 # htop
 sudo apt -y install htop
 
@@ -34,10 +37,10 @@ wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-
 
 # Installing dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
+#~/.dropbox-dist/dropboxd
 
 # Installing telegram
-cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xjf -
+cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
 sudo mv ./Telegram /opt/Telegram
 
 # Installing java sdk 8
@@ -47,4 +50,12 @@ cd ~ \
 http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz \
 | tar -xzf -\
 sudo mv ./jdk1.8.0_102 /opt/
+echo "# Java path" >> ~/.bashrc
+echo "export JAVA_HOME=/opt/jdk1.8.0_102" >> /etc/environment
+echo "export PATH=$JAVA_HOME:/bin/:$PATH" >> /etc/environemnt
 
+# Installing sublime text 3
+cd ~
+wget -O subl.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
+sudo dpkg -i subl.deb
+rm -f subl.deb
