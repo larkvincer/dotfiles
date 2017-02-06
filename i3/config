@@ -211,11 +211,11 @@ bar {
 }
 
 # Startup program
-exec redshift
-exec_always ~/.dropbox-dist/dropboxd
+exec --no-startup-id redshift
+exec_always --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec_always feh --bg-scale ~/Pictures/forest-mountains-view-1366x768.jpg
-exec_always --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id feh --bg-scale ~/Pictures/forest-mountains-view-1366x768.jpg
+exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 
 # Windows decoration colors
 set $bg-color 	         #2f343f

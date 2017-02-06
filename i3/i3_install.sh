@@ -8,12 +8,17 @@ sudo apt -y install thunar
 # Lxappearance
 sudo apt -y install lxappearance
 
+# Terminal emulator
+sudo apt -y install xfce4-terminal
+
+sudo apt -y install unzip
+
 # font awesome 
 cd ~/Downloads
 git clone https://github.com/FortAwesome/Font-Awesome.git
 mkdir ~/.fonts
 mv ~/Downloads/Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
-rm -rf Font-Awesom
+rm -rf Font-Awesome
 
 # xbacklight for brightness control
 sudo apt -y install xbacklight
