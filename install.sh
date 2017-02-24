@@ -4,8 +4,11 @@
 # Updating repos
 sudo apt update
 
-# Vim
-sudo apt install -y vim
+# Neovim
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt update
+sudo apt install -y neovim
 
 # Google Chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -24,6 +27,9 @@ sudo apt -y install inkscape
 
 # htop
 sudo apt -y install htop
+
+# lm-sensors
+sudo apt -y install lm-sensors
 
 # Install arc theme
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
@@ -59,3 +65,10 @@ cd ~
 wget -O subl.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
 sudo dpkg -i subl.deb
 rm -f subl.deb
+
+# Tlp power manager
+sudo apt install -y tlp
+
+# Installing programming fonts
+git clone https://github.com/hbin/top-programming-fonts ~/.fonts
+cd ~/.fonts/top-programming-fonts && rm -rf Hack/ README.md 3270Medium.otf install.sh 

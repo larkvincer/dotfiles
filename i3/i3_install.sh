@@ -9,9 +9,7 @@ sudo apt -y install thunar
 sudo apt -y install lxappearance
 
 # Terminal emulator
-sudo apt -y install xfce4-terminal
-
-sudo apt -y install unzip
+sudo apt install gnome-terminal
 
 # font awesome 
 cd ~/Downloads
