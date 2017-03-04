@@ -215,7 +215,7 @@ bar {
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec --no-startup-id feh --bg-scale ~/Pictures/yosemite_mountains-1920x1080.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/Mountain Landscape.jpg
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec --no-startup-id nm-applet
 
