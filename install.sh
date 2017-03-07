@@ -58,7 +58,7 @@ http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
 && sudo mv ./jdk1.8.0_102 opt/ 
 echo "# Java path" >> ~/.bashrc
 echo "export JAVA_HOME=/opt/jdk1.8.0_102" >> ~/.bashrc
-echo "export PATH=$JAVA_HOME:/bin/:$PATH" >> ~/.bashrc
+echo "export PATH='$JAVA_HOME:/bin/:$PATH'" >> ~/.bashrc
 
 # Installing sublime text 3
 cd ~
