@@ -17,7 +17,7 @@ sudo apt update
 sudo apt install -y google-chrome-stable
 
 # Redshift
-sudo apt -y install redshift
+#sudo apt -y install redshift
 
 # Git
 sudo apt -y install git
@@ -55,7 +55,7 @@ cd ~ \
 --header "Cookie: oraclelicense=accept-securebackup-cookie" \
 http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz \
 | tar -xzf -\
-sudo mv ./jdk1.8.0_102 /opt/
+&& sudo mv ./jdk1.8.0_102 opt/ 
 echo "# Java path" >> ~/.bashrc
 echo "export JAVA_HOME=/opt/jdk1.8.0_102" >> ~/.bashrc
 echo "export PATH=$JAVA_HOME:/bin/:$PATH" >> ~/.bashrc

@@ -12,10 +12,9 @@ sudo apt -y install lxappearance
 sudo apt install gnome-terminal
 
 # font awesome 
-cd ~/Downloads
 git clone https://github.com/FortAwesome/Font-Awesome.git
 mkdir ~/.fonts
-mv ~/Downloads/Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
+mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
 rm -rf Font-Awesome
 
 # xbacklight for brightness control
