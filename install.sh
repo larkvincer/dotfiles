@@ -41,6 +41,9 @@ rm Release.key
 # Papirus icon theme
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
+# Unity-tweak-tool
+sudo apt intall -y unity-tweak-tool
+
 # Installing dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 #~/.dropbox-dist/dropboxd
