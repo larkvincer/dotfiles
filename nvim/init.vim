@@ -11,11 +11,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'https://github.com/mhartington/oceanic-next'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/ctrlp.vim'
-
-" Ruby config
-Plug 'vim-ruby/vim-ruby'
-
+Plug 'kien/ctrlp.vim' 
 
 " Initialize plugin system
 call plug#end()
