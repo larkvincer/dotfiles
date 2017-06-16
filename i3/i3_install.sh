@@ -27,7 +27,7 @@ sudo apt -y install compton
 sudo apt -y install feh
 
 # Monitor configuration gui
-sudo apt -y install arandar
+#sudo apt -y install arandar
 
 # Infanality for better font rendering
 sudo add-apt-repository ppa:no1wantdthisname/ppa
