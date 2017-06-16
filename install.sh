@@ -5,7 +5,7 @@
 sudo apt update
 
 # Tilda terminal
-sudo apt -y install tilda
+#sudo apt -y install tilda
 
 # Neovim
 sudo apt-get install software-properties-common
@@ -20,13 +20,13 @@ sudo apt update
 sudo apt install -y google-chrome-stable
 
 # Redshift
-#sudo apt -y install redshift
+sudo apt -y install redshift
 
 # Git
-sudo apt -y install git
+#sudo apt -y install git
 
 # Inkscape
-sudo apt -y install inkscape
+#sudo apt -y install inkscape
 
 # htop
 sudo apt -y install htop
@@ -45,12 +45,12 @@ rm Release.key
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 # Unity-tweak-tool
-sudo apt -y install unity-tweak-tool 
+#sudo apt -y install unity-tweak-tool 
 
 
 # Installing dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-#~/.dropbox-dist/dropboxd
+~/.dropbox-dist/dropboxd
 
 # Installing telegram
 cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
@@ -68,14 +68,14 @@ echo 'export JAVA_HOME=/opt/jdk1.8.0_102' >> ~/.bashrc
 echo 'export PATH="$JAVA_HOME/bin/:$PATH"' >> ~/.bashrc
 
 # Installing sublime text 3
-cd ~
-wget -O subl.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
-sudo dpkg -i subl.deb
-rm -f subl.deb
+#cd ~
+#wget -O subl.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
+#sudo dpkg -i subl.deb
+#rm -f subl.deb
 
 # Tlp power manager
 sudo apt install -y tlp
 
 # Installing programming fonts
-git clone https://github.com/hbin/top-programming-fonts ~/.fonts
-cd ~/.fonts/top-programming-fonts && rm -rf Hack/ README.md 3270Medium.otf install.sh 
+#git clone https://github.com/hbin/top-programming-fonts ~/.fonts
+#cd ~/.fonts/top-programming-fonts && rm -rf Hack/ README.md 3270Medium.otf install.sh 
