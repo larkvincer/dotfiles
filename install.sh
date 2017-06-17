@@ -4,29 +4,24 @@
 # Updating repos
 sudo apt update
 
-# Tilda terminal
-#sudo apt -y install tilda
-
 # Neovim
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt update
 sudo apt install -y neovim
 
+# Installing zsh
+sudo apt -y install zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`
+
 # Google Chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo apt update
-sudo apt install -y google-chrome-stable
+sudo apt -y install google-chrome-stable
 
 # Redshift
 sudo apt -y install redshift
-
-# Git
-#sudo apt -y install git
-
-# Inkscape
-#sudo apt -y install inkscape
 
 # htop
 sudo apt -y install htop
@@ -44,38 +39,20 @@ rm Release.key
 # Papirus icon theme
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
-# Unity-tweak-tool
-#sudo apt -y install unity-tweak-tool 
-
-
-# Installing dropbox
+# Installing dropbox 
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
 
 # Installing telegram
 cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
 sudo mv ./Telegram /opt/Telegram
 
 # Installing java sdk 8
-cd ~ \
-&& wget -O - -c --no-check-certificate --no-cookies \
---header "Cookie: oraclelicense=accept-securebackup-cookie" \
-http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz \
-| tar -xzf - \
-&& sudo mv jdk1.8.0_102 /opt
-echo "# Java path" >> ~/.bashrc
-echo 'export JAVA_HOME=/opt/jdk1.8.0_102' >> ~/.bashrc
-echo 'export PATH="$JAVA_HOME/bin/:$PATH"' >> ~/.bashrc
-
-# Installing sublime text 3
-#cd ~
-#wget -O subl.deb https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
-#sudo dpkg -i subl.deb
-#rm -f subl.deb
+sudo apt -y install -y openjdk-8-jdk
 
 # Tlp power manager
-sudo apt install -y tlp
+sudo apt -y install tlp
 
-# Installing programming fonts
-#git clone https://github.com/hbin/top-programming-fonts ~/.fonts
-#cd ~/.fonts/top-programming-fonts && rm -rf Hack/ README.md 3270Medium.otf install.sh 
+# System San Francisco font
+mkdir -p ~/.fonts && cd ~/.fonts
+git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git
+fc-cache

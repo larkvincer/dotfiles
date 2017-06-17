@@ -11,10 +11,14 @@
 
 set $mod Mod4
 
+for_window [class="^.*"] border pixel 0
+smart_gaps on
+gaps inner 10
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in sthe bar {} block below.
 #font pango: Ubuntu Medium 10
-font pango: System San Francisco Display Bold 10
+font pango: System San Francisco Display bold 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -179,16 +183,16 @@ for_window [class="TelegramDesktop"] floating enable, move container to workspac
 for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace3, resize set 450 550, workspace $workspace3
 
 # Rofi
-bindsym $mod+d exec rofi -modi drun -show drun -lines 3 -eh 2 -width 100 -padding 330 -fullscrean -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+#bindsym $mod+d exec rofi -modi drun -show drun -lines 3 -eh 2 -width 100 -padding 330 -fullscrean -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 set $exit_mode " (L)ogout,   (S)uspend,   (H)ibernate,   (R)eboot,   (P)oweroff" 
 # Create Log out, Reboot, Poweroff bindings
 mode  $exit_mode {
-        bindsym $mod+r exec systemctl reboot
+        bindsym $mod+r exec reboot
         bindsym $mod+l exit
-        bindsym $mod+p exec systemctl poweroff
-	bindsym $mod+s exec i3lock -c 475263 && systemctl suspend
-	bindsym $mod+h exec i3lock -c 475263 && systemctl hibernate
+        bindsym $mod+p exec poweroff
+	bindsym $mod+s exec i3lock -c 475263 && pm-suspend
+	bindsym $mod+h exec i3lock -c 475263 && pm-hibernate
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -199,6 +203,8 @@ bindsym $mod+Shift+e mode $exit_mode
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	height 25
+	position top
 	#tray_output primary
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
@@ -215,7 +221,8 @@ bar {
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec --no-startup-id feh --bg-scale ~/Documents/dotfiles/Pictures/Mountain\ Landscape.jpg
+exec_always albert -k alt+space
+exec --no-startup-id feh --bg-scale ~/Pictures/greentree.jpeg
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec --no-startup-id nm-applet
 
