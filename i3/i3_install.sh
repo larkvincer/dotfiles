@@ -34,8 +34,5 @@ sudo add-apt-repository ppa:no1wantdthisname/ppa
 sudo apt update
 sudo apt -y install fontconfig-infinality
 
-# rofi (replacement for dmenu)
-sudo apt -y install rofi
-
 # i3 blocks
 sudo apt -y install i3blocks
