@@ -37,7 +37,7 @@ sudo apt update && sudo apt -y install arc-theme
 rm Release.key
 
 # Papirus icon theme
-wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
+# wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 # Installing dropbox 
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
@@ -47,7 +47,7 @@ cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
 sudo mv ./Telegram /opt/Telegram
 
 # Installing java sdk 8
-sudo apt -y install -y openjdk-8-jdk
+# sudo apt -y install -y openjdk-8-jdk
 
 # Tlp power manager
 sudo apt -y install tlp

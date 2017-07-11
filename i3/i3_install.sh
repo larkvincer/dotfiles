@@ -9,7 +9,7 @@ sudo apt -y install thunar
 sudo apt -y install lxappearance
 
 # Terminal emulator
-sudo apt install gnome-terminal
+# sudo apt install gnome-terminal
 
 # font awesome 
 git clone https://github.com/FortAwesome/Font-Awesome.git
@@ -27,12 +27,12 @@ sudo apt -y install compton
 sudo apt -y install feh
 
 # Monitor configuration gui
-#sudo apt -y install arandar
+sudo apt -y install arandar
 
 # Infanality for better font rendering
-sudo add-apt-repository ppa:no1wantdthisname/ppa
-sudo apt update
-sudo apt -y install fontconfig-infinality
+#sudo add-apt-repository ppa:no1wantdthisname/ppa
+#sudo apt update
+#sudo apt -y install fontconfig-infinality
 
 # i3 blocks
 sudo apt -y install i3blocks
