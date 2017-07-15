@@ -184,8 +184,8 @@ bindsym $mod + x exec i3lock -c 475263
 # Suspend handler
 bindsym XF86Suspend exec i3lock --color 475263
 
-for_window [class="TelegramDesktop"] floating enable, move container to workspace $workspace3, resize set 450 550, workspace $workspace3
-for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace3, resize set 450 550, workspace $workspace3
+for_window [class="TelegramDesktop"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
+for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
 
 # Rofi
 #bindsym $mod+d exec rofi -modi drun -show drun -lines 3 -eh 2 -width 100 -padding 330 -fullscrean -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
@@ -193,11 +193,11 @@ for_window [title="Inbox - Wunderlist"] floating enable, move container to works
 set $exit_mode " (L)ogout,   (S)uspend,   (H)ibernate,   (R)eboot,   (P)oweroff" 
 # Create Log out, Reboot, Poweroff bindings
 mode  $exit_mode {
-        bindsym $mod+r exec reboot
+        bindsym $mod+r exec systemctl reboot
         bindsym $mod+l exit
-        bindsym $mod+p exec poweroff
-	bindsym $mod+s exec i3lock -c 475263 && pm-suspend
-	bindsym $mod+h exec i3lock -c 475263 && pm-hibernate
+        bindsym $mod+p exec systemctl poweroff
+	bindsym $mod+s exec i3lock -c 475263 && systemctl suspend
+	bindsym $mod+h exec i3lock -c 475263 && systemctl hibernate
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -210,7 +210,7 @@ bindsym $mod+Shift+e mode $exit_mode
 bar {
 	font xft: System San Francisco Display Bold 10, Fontawesome bold 10
 	height 25
-	position top
+	position bottom
 	#tray_output primary
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
@@ -228,7 +228,7 @@ exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 exec_always albert -k alt+space
-exec --no-startup-id feh --bg-scale ~/Pictures/deep_valley_switzerland_4k-wide.jpg
+exec --no-startup-id nitrogen
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec --no-startup-id nm-applet
 
