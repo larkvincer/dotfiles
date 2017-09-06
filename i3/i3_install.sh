@@ -9,7 +9,7 @@ sudo apt -y install thunar
 sudo apt -y install lxappearance
 
 # Terminal emulator
-# sudo apt install gnome-terminal
+ sudo apt install gnome-terminal
 
 # font awesome 
 git clone https://github.com/FortAwesome/Font-Awesome.git
@@ -18,13 +18,15 @@ mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
 rm -rf Font-Awesome
 
 # xbacklight for brightness control
-sudo apt -y install xbacklight
+#sudo apt -y install xbacklight
 
 # comption compositor
 sudo apt -y install compton
 
 # feh for background image
-sudo apt -y install feh
+#sudo apt -y install feh
+
+sudo apt -y install nitrogen
 
 # Monitor configuration gui
 sudo apt -y install arandar

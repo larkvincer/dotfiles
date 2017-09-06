@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-brightness=`light`
+brightness=`xbacklight -get`
 echo ${brightness%%.*}

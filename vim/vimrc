@@ -12,9 +12,6 @@ Plug 'scrooloose/nerdtree'
 " Vim color picker
 Plug 'kabbamine/vcoolor.vim'
 
-" File icons for vim
-Plug 'ryanoasis/vim-devicons'
-
 " Fuzzy finder -- absolutely must have.
 Plug 'kien/ctrlp.vim'
 
@@ -24,8 +21,12 @@ Plug 'tpope/vim-commentary'
 " Autocomplete engine
 Plug 'valloric/youcompleteme'
 
+" Brackets autocomplete
+Plug 'git://github.com/jiangmiao/auto-pairs.git'
+
 " Light status line
 Plug 'itchyny/lightline.vim'
+
 " git intigration for lightline
 Plug 'tpope/vim-fugitive'
 
@@ -46,6 +47,9 @@ Plug 'indenthtml.vim'
 
 " I write markdown a lot. This is a good syntax.
 Plug 'tpope/vim-markdown'
+
+" Atom one light theme
+Plug 'rakr/vim-one'
 
 " Initialize plugin system
 call plug#end()
@@ -131,7 +135,7 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " Lightline configuration
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -159,13 +163,9 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 syntax on " Syntax highlighting
 colorscheme onedark
+set background=light
+
 set listchars=tab:▸\ ,eol:¬
 set listchars+=space:·
 set list
 set number
-
-" VimDevIcons configuration
-set encoding=utf8
-set guifont=UbuntuMono\ Nerd\ Font\ Mono\ 12
-let g:airline_powerline_fonts = 1
-

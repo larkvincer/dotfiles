@@ -5,10 +5,10 @@
 sudo apt update
 
 # Neovim
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:neovim-ppa/stable -y
-sudo apt update
-sudo apt install -y neovim
+#sudo apt-get install software-properties-common
+#sudo add-apt-repository ppa:neovim-ppa/stable -y
+#sudo apt update
+#sudo apt install -y neovim
 
 # Installing zsh
 sudo apt -y install zsh
@@ -16,9 +16,9 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 chsh -s `which zsh`
 
 # Google Chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-sudo apt update
-sudo apt -y install google-chrome-stable
+#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+#sudo apt update
+#sudo apt -y install google-chrome-stable
 
 # Redshift
 sudo apt -y install redshift
@@ -37,10 +37,10 @@ sudo apt update && sudo apt -y install arc-theme
 rm Release.key
 
 # Papirus icon theme
-# wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
+ wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 # Installing dropbox 
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+#cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
 # Installing telegram
 cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
