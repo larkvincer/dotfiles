@@ -4,21 +4,10 @@
 # Updating repos
 sudo apt update
 
-# Neovim
-#sudo apt-get install software-properties-common
-#sudo add-apt-repository ppa:neovim-ppa/stable -y
-#sudo apt update
-#sudo apt install -y neovim
-
 # Installing zsh
 sudo apt -y install zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
-
-# Google Chrome
-#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-#sudo apt update
-#sudo apt -y install google-chrome-stable
 
 # Redshift
 sudo apt -y install redshift
@@ -39,20 +28,43 @@ rm Release.key
 # Papirus icon theme
  wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
-# Installing dropbox 
-#cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-
 # Installing telegram
 cd ~ && wget -O - "https://telegram.org/dl/desktop/linux" | tar xJf -
 sudo mv ./Telegram /opt/Telegram
 
-# Installing java sdk 8
-# sudo apt -y install -y openjdk-8-jdk
-
 # Tlp power manager
 sudo apt -y install tlp
 
-# System San Francisco font
-mkdir -p ~/.fonts && cd ~/.fonts
-git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git
-fc-cache
+# Install atom text editor
+cd ~
+wget -O atom https://atom.io/download/deb
+dpkg -I atom-amd64.deb
+sudo apt install -f
+sudo dpkg -i atom
+rm -f atom
+# Atom packages
+packages="atom-packages"
+if [[ -f $packages ]]; then
+  apm install --packages-file $packages;
+else
+  echo "File with atom packages list is absent" 1>$2;
+fi
+
+# Install Fira Code font
+mkdir -p ~/.fonts/FiraCode
+cd ~/.fonts/FiraCode
+wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Bold.ttf
+wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf
+wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Medium.ttf
+fc-cache -fv
+
+# Albert launcher
+sudo add-apt-repository -y ppa:nilarimogard/webupd8
+sudo apt update
+sudo apt -y install albert
+
+# Google Chrome
+cd ~
+wget -O chrome https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i chrome
+rm -f chrome
