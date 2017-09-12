@@ -21,6 +21,12 @@ Plug 'tpope/vim-commentary'
 " Autocomplete engine
 Plug 'valloric/youcompleteme'
 
+" Lint engine
+Plug 'w0rp/ale'
+
+" Snippets engine
+Plug 'sirver/ultisnips'
+
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
@@ -36,6 +42,7 @@ Plug 'leshill/vim-json'
 " vim already has syntax support for javascript, but the indent support is
 " horrid. This fixes that.
 Plug 'pangloss/vim-javascript'
+
 " jsx syntax highliting
 Plug 'mxw/vim-jsx'
 
@@ -150,6 +157,7 @@ set noshowmode
 " Let ctrlp have up to 30 results.
 let g:ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -157,12 +165,25 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+" UltiSnippet configuration
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Ale config
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = 'e'
+let g:ale_sign_warning = 'w'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
 
+
 " Colorscheme configuration
 syntax on " Syntax highlighting
-colorscheme onedark
+colorscheme one
 set background=light
 
 set listchars=tab:▸\ ,eol:¬
