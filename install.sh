@@ -19,9 +19,9 @@ sudo apt -y install htop
 sudo apt -y install lm-sensors
 
 # Install arc theme
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
 wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
 sudo apt-key add - < Release.key
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
 sudo apt update && sudo apt -y install arc-theme
 rm Release.key
 
@@ -35,29 +35,6 @@ sudo mv ./Telegram /opt/Telegram
 # Tlp power manager
 sudo apt -y install tlp
 
-# Install atom text editor
-cd ~
-wget -O atom https://atom.io/download/deb
-dpkg -I atom-amd64.deb
-sudo apt install -f
-sudo dpkg -i atom
-rm -f atom
-# Atom packages
-packages="atom-packages"
-if [[ -f $packages ]]; then
-  apm install --packages-file $packages;
-else
-  echo "File with atom packages list is absent" 1>$2;
-fi
-
-# Install Fira Code font
-mkdir -p ~/.fonts/FiraCode
-cd ~/.fonts/FiraCode
-wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Bold.ttf
-wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf
-wget github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Medium.ttf
-fc-cache -fv
-
 # Albert launcher
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo apt update
@@ -66,5 +43,7 @@ sudo apt -y install albert
 # Google Chrome
 cd ~
 wget -O chrome https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -I chrome
+sudo apt install -f
 sudo dpkg -i chrome
 rm -f chrome
