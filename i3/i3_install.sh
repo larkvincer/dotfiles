@@ -24,8 +24,17 @@ sudo make install
 # add-apt-repository
 sudo apt -y install software-properties-common python-software-properties
 
-# pulse audio
+# audio server
 sudo apt install pulseaudio
+
+# Utility to get current keyboard layout
+git clone https://github.com/nonpop/xkblayout-state.git layout
+cd layout
+git reset --hard c5e17d2436bc95927abb6b04f0517a2a44772f4b
+make
+sudo mv xkblayout-state /usr/bin/
+cd ..
+sudo rm -rf layout
 
 # Image viewer
 sudo apt -y install gpicview
@@ -59,7 +68,7 @@ sudo apt -y install compton
 sudo apt -y install nitrogen
 
 # Monitor configuration gui
-sudo apt -y install arandar
+sudo apt -y install arandr
 
 # Infanality for better font rendering
 sudo add-apt-repository ppa:no1wantdthisname/ppa

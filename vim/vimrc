@@ -26,7 +26,6 @@ Plug 'w0rp/ale'
 
 " Snippets engine
 Plug 'sirver/ultisnips'
-
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
@@ -184,7 +183,7 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 syntax on " Syntax highlighting
 colorscheme one
-set background=light
+set background=dark
 
 set listchars=tab:▸\ ,eol:¬
 set listchars+=space:·
