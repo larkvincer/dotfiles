@@ -1,0 +1,8 @@
+Xcursor.theme: DMZ-White
+
+URxvt.font: xft:monaco:medium:size=10
+URxvt*foreground: #eeeeee
+URxvt.background: #000000
+URxvt.scrollBar: false
+
+URxvt.url-launcher: google-chrome
