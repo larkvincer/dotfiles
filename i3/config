@@ -2,73 +2,66 @@
 
 set $mod Mod4
 
-for_window [class="^.*"] border pixel 0
+# ENABLE GAPS FEATURE
+for_window [class="^.*"] border pixel 2
+for_window [class="albert"] border pixel 0
 smart_gaps on
 gaps inner 4
 
 font pango: Ubuntu Medium 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# USE MOUSE+$MOD TO DRAG FLOATING WINDOWS TO THEIR WANTED POSITION
 floating_modifier $mod
 
-# start a terminal
+# START A TERMINAL
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
+# KILL FOCUSED WINDOW
 bindsym $mod+Shift+q kill
 
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
+# CHANGE FOCUS
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
+# user arrow keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# MOVE FOCUSED WINDOW
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
+# use arrow keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# CHANGE SPLITTING ORIENTATION
+#horizontal orientation
 bindsym $mod+u split h
-
-# split in vertical orientation
+#vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# ENTER FULLSCREEN MODE FOR THE FOCUSED CONTAINER
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# CHANGE CONTAINER LAYOUT (STACKED, TABBED, TOGGLE SPLIT)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# TOGGLE TILING / FLOATING
 bindsym $mod+shift+space floating toggle
 
-# change focus between tiling / floating windows
+# CHANGE FOCUS BETWEEN TILING / FLOATING WINDOWS
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
+# WORKSPACES NAME
 set $workspace1 1: 
 set $workspace2 2: 
 set $workspace3 3: 
@@ -79,7 +72,8 @@ set $workspace7 7: 
 set $workspace8 8: 
 set $workspace9 9: 
 set $workspace10 10: 
-# switch to workspace
+
+# SWITCH TO WORKSPACE
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -91,7 +85,7 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-# move focused container to workspace
+# MOVE FOCUSED CONTAINER TO WORKSPACE
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
@@ -103,99 +97,82 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# reload the configuration file
+# RELOAD THE CONFIGURATION FILE
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# RESTART I3 INPLACE (PRESERVES YOUR LAYOUT/SESSION, CAN BE USED TO UPGRADE I3)
+bindsym $mod+Shift+r restart
+
+# CUSTOM MODES
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -5 # decrease screen brightness
-
-# Touchpad controls
-bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggletouchpad.sh # toggle touchpad
-# Screenshot maker
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ && mv $f ~/Pictures/screenshots/'
-
 bindsym $mod+r mode "resize"
-
-# Screen locker
-bindsym $mod + x exec i3lock -c 475263
-
-# Suspend handler
-bindsym XF86Suspend exec i3lock --color 475263
-
-for_window [class="TelegramDesktop"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
-for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
-
-# Rofi
-#bindsym $mod+d exec rofi -modi drun -show drun -lines 3 -eh 2 -width 100 -padding 330 -fullscrean -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
-
+# power controll menu
 set $exit_mode " (L)ogout,   (S)uspend,   (H)ibernate,   (R)eboot,   (P)oweroff" 
 # Create Log out, Reboot, Poweroff bindings
-mode  $exit_mode {
+mode $exit_mode {
         bindsym $mod+r exec systemctl reboot
         bindsym $mod+l exit
         bindsym $mod+p exec systemctl poweroff
         bindsym $mod+s exec i3lock -c 475263 && systemctl suspend
         bindsym $mod+h exec i3lock -c 475263 && systemctl hibernate
-
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode $exit_mode
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# CUSTOM BINDINGS
+# pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -5 # decrease screen brightness
+# touchpad controls
+bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggletouchpad.sh # toggle touchpad
+# screenshot maker
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screenshots/ && mv $f ~/Pictures/screenshots/'
+# screen locker
+bindsym $mod + x exec i3lock -c 475263
+# suspend handler
+bindsym XF86Suspend exec i3lock --color 475263
+
+# BIND CERTAIN WINDOWS TO WORKSPACES
+for_window [class="TelegramDesktop"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
+for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
+
+
+# START I3BAR
 bar {
   font xft: FontAwesome bold 10
   height 25
   position top
-  #tray_output primary
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
-    background $bg-color
-        separator #757575
-    #type              border             background         text
-    focused_workspace  $active-bg-color   $active-bg-color   $active-text-color
-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    background $bar-color
+    #type                border             background         text
+    focused_workspace    $active-bg-color   $active-bg-color   $active-text-color
+    inactive_workspace   $bar-color         $bar-color         $inactive-text-color
+    urgent_workspace     $urgent-bg-color   $urgent-bg-color   $text-color
   }
 }
 
-# Startup program
+# STARTUP PROGRAM
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
@@ -204,18 +181,19 @@ exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec --no-startup-id nm-applet
 
-# Windows decoration colors
-set $bg-color 	         #262324
-set $inactive-bg-color   #262324
+#DECORATION COLORS
+set $bar-color           #262324
+set $bg-color            #363334
+set $inactive-bg-color   #363334
 set $text-color          #efefef
 set $inactive-text-color #bfbfbf
 set $urgent-bg-color     #E53935
 set $active-bg-color     #cccccc
 set $active-text-color   #262324
 
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+# WINDOW COLORS
+#                       border              background         text                 indicator 
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
+client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
