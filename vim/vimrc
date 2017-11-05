@@ -3,8 +3,8 @@
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
-" One dark colorscheme
-Plug 'joshdick/onedark.vim'
+" Solarized theme
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
@@ -141,7 +141,7 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " Lightline configuration
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -171,8 +171,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Ale config
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = 'e'
-let g:ale_sign_warning = 'w'
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -183,9 +186,9 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
-colorscheme onedark
+colorscheme solarized
 
 set listchars=tab:▸\ ,eol:¬
-set listchars+=space:·
+"set listchars+=space:·
 set list
 set number
