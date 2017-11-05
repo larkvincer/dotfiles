@@ -179,7 +179,7 @@ exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 exec_always albert -k alt+space
 exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 
 #DECORATION COLORS
 set $bar-color           #262324
