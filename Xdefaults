@@ -1,10 +1,5 @@
 Xcursor.theme: DMZ-Black
 
-Xft.dpi:                    96
-Xft.antialias:              false
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
 ! Rxvt settings
 ! Fix font space
 URxvt*letterSpace: -1
@@ -15,7 +10,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false: false
 
 ! Cursor
-URxvt.cursorBlink:          true
+URxvt.cursorBlink:          false
 URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
 
@@ -59,6 +54,6 @@ URxvt.cursorUnderline:      false
 *color7: #eee8d5
 *color15: #fdf6e3
 
-URxvt.font: xft:Fira Code:regular:size=11
+URxvt.font: xft:Fira Mono:size=11
 
 URxvt.url-launcher: google-chrome
