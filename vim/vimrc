@@ -1,6 +1,7 @@
 " True color
 " set termguicolors
 
+set term=screen-256color
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 " Solarized theme
@@ -9,8 +10,15 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
 
-" Vim color picker
-Plug 'kabbamine/vcoolor.vim'
+" Editor config plugin
+Plug 'editorconfig/editorconfig-vim'
+
+" Notes taking plugin
+Plug 'xolox/vim-notes'
+Plug 'https://github.com/xolox/vim-misc.git'
+
+" Ident line
+Plug 'yggdroot/indentline'
 
 " Fuzzy finder -- absolutely must have.
 Plug 'kien/ctrlp.vim'
@@ -38,9 +46,8 @@ Plug 'tpope/vim-fugitive'
 " Proper JSON filetype detection, and support.
 Plug 'leshill/vim-json'
 
-" vim already has syntax support for javascript, but the indent support is
-" horrid. This fixes that.
-Plug 'pangloss/vim-javascript'
+" Javascript syntax
+Plug 'jelera/vim-javascript-syntax'
 
 " jsx syntax highliting
 Plug 'mxw/vim-jsx'
@@ -48,14 +55,15 @@ Plug 'mxw/vim-jsx'
 " Zen coding
 Plug 'mattn/emmet-vim'
 
+" Git difference
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
 " vim indents HTML very poorly on it's own. This fixes a lot of that.
 Plug 'indenthtml.vim'
 
 " I write markdown a lot. This is a good syntax.
 Plug 'tpope/vim-markdown'
-
-" Atom one light theme
-Plug 'rakr/vim-one'
 
 " Initialize plugin system
 call plug#end()
@@ -67,9 +75,9 @@ filetype off
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab " use spaces instead of tabs.
 set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
 set shiftround " tab / shifting moves to closest tabstop.
@@ -167,7 +175,7 @@ let g:ctrlp_custom_ignore = {
 " UltiSnippet configuration
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 
 " Ale config
 let g:ale_sign_column_always = 1
@@ -186,9 +194,12 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
+set background=light
 colorscheme solarized
 
 set listchars=tab:▸\ ,eol:¬
 "set listchars+=space:·
 set list
 set number
+set mouse=a
+filetype plugin on
