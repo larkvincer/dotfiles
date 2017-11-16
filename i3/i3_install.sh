@@ -52,11 +52,6 @@ sudo apt -y install dmz-cursor-theme
 # Terminal emulator
 sudo apt -y install rxvt-unicode-256color
 
-# font awesome 
-git clone https://github.com/FortAwesome/Font-Awesome.git
-mkdir ~/.fonts
-mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
-rm -rf Font-Awesome
 
 # xbacklight for brightness control
 sudo apt -y install xbacklight
@@ -75,10 +70,11 @@ sudo add-apt-repository ppa:no1wantdthisname/ppa
 sudo apt update
 sudo apt -y install fontconfig-infinality
 
-# Install Ubuntu font
+# Install fonts
 mkdir -p ~/.fonts
-cd ~/.fonts
-wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
-unzip ubuntu-font-family-0.83.zip
-rm -f ubuntu-font-familty-0.83.zip
+# font awesome 
+git clone https://github.com/FortAwesome/Font-Awesome.git
+mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
+rm -rf Font-Awesome
+
 fc-cache -fv
