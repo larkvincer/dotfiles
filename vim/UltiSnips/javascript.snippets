@@ -2,6 +2,12 @@ snippet log
 console.log(${1: logging body});$0
 endsnippet
 
+snippet logg
+console.group('$1');
+$2
+console.groupEnd();
+endsnippet
+
 snippet rcc
 import React from 'react';
 
