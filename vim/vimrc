@@ -6,19 +6,16 @@ set term=screen-256color
 call plug#begin('~/.vim/plugged')
 " Solarized theme
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
+" Iceberg colortheme
+Plug 'https://github.com/cocopon/iceberg.vim.git'
+" Nordic colortheme 
+Plug 'https://github.com/arcticicestudio/nord-vim.git'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
 
 " Editor config plugin
 Plug 'editorconfig/editorconfig-vim'
-
-" Notes taking plugin
-Plug 'xolox/vim-notes'
-Plug 'https://github.com/xolox/vim-misc.git'
-
-" Ident line
-Plug 'yggdroot/indentline'
 
 " Fuzzy finder -- absolutely must have.
 Plug 'kien/ctrlp.vim'
@@ -32,8 +29,12 @@ Plug 'valloric/youcompleteme'
 " Lint engine
 Plug 'w0rp/ale'
 
+" Ale integration with lightline
+Plug 'https://github.com/maximbaz/lightline-ale.git'
+
 " Snippets engine
 Plug 'sirver/ultisnips'
+
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
@@ -43,8 +44,8 @@ Plug 'itchyny/lightline.vim'
 " git intigration for lightline
 Plug 'tpope/vim-fugitive'
 
-" Proper JSON filetype detection, and support.
-Plug 'leshill/vim-json'
+" Git difference
+Plug 'airblade/vim-gitgutter'
 
 " Javascript syntax
 Plug 'jelera/vim-javascript-syntax'
@@ -54,10 +55,6 @@ Plug 'mxw/vim-jsx'
 
 " Zen coding
 Plug 'mattn/emmet-vim'
-
-" Git difference
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 
 " vim indents HTML very poorly on it's own. This fixes a lot of that.
 Plug 'indenthtml.vim'
@@ -130,7 +127,8 @@ nnoremap <C-l> <C-w>l
 " vnoremap / /\v
 
 " Clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+" noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <leader><space> :noh<cr>
 
 " Quick buffer switching - like cmd-tab'ing
 " nnoremap <leader><leader> <c-^>
@@ -149,7 +147,7 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " Lightline configuration
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -158,6 +156,17 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+let g:lightline.component_expand = {
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \ }
+let g:lightline.active = { 'right': [[ 'linter_errors', 'linter_warnings', 'linter_ok'  ]]  }
+
 set noshowmode
 
 " CtrlP configuration
@@ -181,9 +190,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -194,8 +203,8 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
-set background=light
-colorscheme solarized
+" set background=dark
+colorscheme nord
 
 set listchars=tab:▸\ ,eol:¬
 "set listchars+=space:·
