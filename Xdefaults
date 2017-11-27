@@ -1,3 +1,7 @@
+! Cursor theme
+Xcursor.theme: Sheren Khan X
+
+
 ! Rxvt settings
 ! Fix font space
 URxvt*letterSpace: -1
