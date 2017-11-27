@@ -26,6 +26,8 @@ sudo apt -y install software-properties-common python-software-properties
 
 # audio server
 sudo apt install pulseaudio
+# Volume applet
+sudo apt install volumeicon-alsa
 
 # Utility to get current keyboard layout
 git clone https://github.com/nonpop/xkblayout-state.git layout
@@ -76,5 +78,8 @@ mkdir -p ~/.fonts
 git clone https://github.com/FortAwesome/Font-Awesome.git
 mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
 rm -rf Font-Awesome
-
+# Fira sans font
+cd $HOME/.fonts
+git clone https://github.com/mozilla/Fira.git fira-sansa
+mv fira-sans/ttf ./FiraSans
 fc-cache -fv
