@@ -8,13 +8,13 @@ for_window [class="albert"] border pixel 0
 smart_gaps on
 gaps inner 4
 
-font pango: Ubuntu Medium 10
+font pango: Fira Sans 10
 
 # USE MOUSE+$MOD TO DRAG FLOATING WINDOWS TO THEIR WANTED POSITION
 floating_modifier $mod
 
 # START A TERMINAL
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt #i3-sensible-terminal urxvt
 
 # KILL FOCUSED WINDOW
 bindsym $mod+Shift+q kill
@@ -159,8 +159,8 @@ for_window [title="Inbox - Wunderlist"] floating enable, move container to works
 
 # START I3BAR
 bar {
-  font xft: FontAwesome bold 10
-  height 25
+  font xft: Font Awesome 10
+  height 27
   position top
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
@@ -180,6 +180,8 @@ exec_always albert -k alt+space
 exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec_always --no-startup-id nm-applet
+exec ~/.screenlayout/Default.sh
+exec --no-startup-id volumeicon
 
 #DECORATION COLORS
 set $bar-color           #262324
