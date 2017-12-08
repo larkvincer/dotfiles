@@ -1,7 +1,7 @@
 " True color
-" set termguicolors
+set termguicolors
 
-set term=screen-256color
+" set term=screen-256color
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 " Solarized theme
@@ -62,6 +62,8 @@ Plug 'indenthtml.vim'
 " I write markdown a lot. This is a good syntax.
 Plug 'tpope/vim-markdown'
 
+" Normal mode for ukranian language
+Plug 'https://github.com/lyokha/vim-xkbswitch.git'
 " Initialize plugin system
 call plug#end()
 
@@ -199,16 +201,32 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
 
+" vim-xkbswitch config
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']
 
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
-" set background=dark
+set background=dark
 colorscheme nord
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let loaded_matchparen = 1
+
 
 set listchars=tab:▸\ ,eol:¬
 "set listchars+=space:·
 set list
 set number
+set relativenumber
+set cursorline
 set mouse=a
 filetype plugin on
+
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
