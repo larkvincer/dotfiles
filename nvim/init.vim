@@ -1,15 +1,10 @@
 " True color
 set termguicolors
 
-" set term=screen-256color
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
-" Solarized theme
-Plug 'https://github.com/altercation/vim-colors-solarized.git'
-" Iceberg colortheme
-Plug 'https://github.com/cocopon/iceberg.vim.git'
-" Nordic colortheme 
-Plug 'https://github.com/arcticicestudio/nord-vim.git'
+call plug#begin('~/.local/share/nvim/plugged')
+" Dracula theme
+Plug 'dracula/vim'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
@@ -23,14 +18,16 @@ Plug 'kien/ctrlp.vim'
 " Support for easily toggling comments.
 Plug 'tpope/vim-commentary'
 
-" Autocomplete engine
-Plug 'valloric/youcompleteme'
-
 " Lint engine
 Plug 'w0rp/ale'
 
-" Ale integration with lightline
-Plug 'https://github.com/maximbaz/lightline-ale.git'
+" Complete engine
+Plug 'valloric/youcompleteme'
+
+" C# fucking IDE
+Plug 'OmniSharp/omnisharp-vim'
+" Use for autostarting omnisharp server
+Plug 'tpope/vim-dispatch'
 
 " Snippets engine
 Plug 'sirver/ultisnips'
@@ -38,10 +35,10 @@ Plug 'sirver/ultisnips'
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
-" Light status line
-Plug 'itchyny/lightline.vim'
+" Airline
+Plug 'vim-airline/vim-airline'
 
-" git intigration for lightline
+" git integration
 Plug 'tpope/vim-fugitive'
 
 " Git difference
@@ -62,8 +59,6 @@ Plug 'indenthtml.vim'
 " I write markdown a lot. This is a good syntax.
 Plug 'tpope/vim-markdown'
 
-" Normal mode for ukranian language
-Plug 'https://github.com/lyokha/vim-xkbswitch.git'
 " Initialize plugin system
 call plug#end()
 
@@ -146,29 +141,6 @@ noremap <leader><space> :noh<cr>
 " Below are some 'sane' (IMHO) defaults for a couple of the above plugins I
 " referenced.
 
-" Lightline configuration
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-let g:lightline.component_expand = {
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \ }
-let g:lightline.active = { 'right': [[ 'linter_errors', 'linter_warnings', 'linter_ok'  ]]  }
-
 set noshowmode
 
 " CtrlP configuration
@@ -176,7 +148,7 @@ set noshowmode
 let g:ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_show_hidden = 1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -192,33 +164,29 @@ let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
-" let g:ale_linters = {
-" \   'javascript': ['eslint'],
-" \}
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Airline config
+let g:airline_powerline_fonts = 1
+
+" You complete me config
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
 
-" vim-xkbswitch config
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
-
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
-set background=dark
-colorscheme nord
-if &term =~# '^screen'
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+colorscheme dracula
 let loaded_matchparen = 1
 
+highlight Pmenu ctermfg=2 ctermbg=3 guifg=#dddddd guibg=#333333
 
 set listchars=tab:▸\ ,eol:¬
-"set listchars+=space:·
+set listchars+=space:·
 set list
 set number
 set relativenumber
@@ -226,7 +194,5 @@ set cursorline
 set mouse=a
 filetype plugin on
 
-set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
