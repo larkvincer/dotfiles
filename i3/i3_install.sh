@@ -41,7 +41,7 @@ sudo rm -rf layout
 # Image viewer
 sudo apt -y install gpicview
 
-# Thunar file manager
+# File manager
 sudo apt -y install thunar
 sudo apt -y install ranger
 
@@ -52,11 +52,21 @@ sudo apt -y install lxappearance
 sudo apt -y install dmz-cursor-theme
 
 # Terminal emulator
-sudo apt -y install rxvt-unicode-256color
+sudo apt -y install gnome-terminal
+
+# Android device auto-detect
+sudo apt -y install libmtp9
 
 
-# xbacklight for brightness control
-sudo apt -y install xbacklight
+# light for brightness control
+cd /tmp
+git clone https://github.com/haikarainen/light.git light
+cd ligth
+make & sudo make install
+cd .. && rm -rf light
+
+# Clipboard manager
+sudo apt -y install xsel
 
 # compton compositor
 sudo apt -y install compton
@@ -73,13 +83,9 @@ sudo apt update
 sudo apt -y install fontconfig-infinality
 
 # Install fonts
-mkdir -p ~/.fonts
+mkdir ~/.fonts
 # font awesome 
-git clone https://github.com/FortAwesome/Font-Awesome.git
-mv Font-Awesome/fonts/fontawesome-webfont.ttf ~/.fonts
-rm -rf Font-Awesome
-# Fira sans font
-cd $HOME/.fonts
-git clone https://github.com/mozilla/Fira.git fira-sansa
-mv fira-sans/ttf ./FiraSans
+sudo apt -y install fonts-font-awesome
+# Ubuntu fonts
+curl -o ubuntu.zip https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip && unzip ubuntu.zip -d ~/.fonts
 fc-cache -fv

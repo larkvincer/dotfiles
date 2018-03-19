@@ -1,10 +1,11 @@
 " True color
-set termguicolors
-" Correct RGB escape codes for vim inside tmux
-if !has('nvim') && $TERM ==# 'screen-256color'
+if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  " set termguicolors
 endif
+set t_AB=^[[48;5;%dm
+set t_AF=^[[38;5;%dm
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
@@ -189,6 +190,9 @@ colorscheme dracula
 let loaded_matchparen = 1
 
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#dddddd guibg=#333333
+
+filetype plugin on
+let g:OmniSharp_server_type = 'roslyn'
 
 set listchars=tab:▸\ ,eol:¬
 set listchars+=space:·

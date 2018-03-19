@@ -8,13 +8,13 @@ for_window [class="albert"] border pixel 0
 smart_gaps on
 gaps inner 4
 
-font pango: Fira Sans 10
+font pango: Ubuntu 10
 
 # USE MOUSE+$MOD TO DRAG FLOATING WINDOWS TO THEIR WANTED POSITION
 floating_modifier $mod
 
 # START A TERMINAL
-bindsym $mod+Return exec urxvt #i3-sensible-terminal urxvt
+bindsym $mod+Return exec gnome-terminal #i3-sensible-terminal gnome-terminal
 
 # KILL FOCUSED WINDOW
 bindsym $mod+Shift+q kill
@@ -141,8 +141,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # touchpad controls
 bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggletouchpad.sh # toggle touchpad
 # screenshot maker
@@ -157,9 +157,19 @@ for_window [class="TelegramDesktop"] floating enable, move container to workspac
 for_window [title="Inbox - Wunderlist"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
 
 
+#DECORATION COLORS
+set $bar-color           #262324
+set $bg-color            #363334
+set $inactive-bg-color   #363334
+set $text-color          #efefef
+set $inactive-text-color #bfbfbf
+set $urgent-bg-color     #E53935
+set $active-bg-color     #cccccc
+set $active-text-color   #262324
+
 # START I3BAR
 bar {
-  font xft: Font Awesome 10
+  font xft: Font Awesome bold 10
   height 27
   position top
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -176,26 +186,18 @@ bar {
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec_always albert -k alt+space
+exec_always albert
 exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec_always --no-startup-id nm-applet
 exec ~/.screenlayout/Default.sh
 exec --no-startup-id volumeicon
 
-#DECORATION COLORS
-set $bar-color           #262324
-set $bg-color            #363334
-set $inactive-bg-color   #363334
-set $text-color          #efefef
-set $inactive-text-color #bfbfbf
-set $urgent-bg-color     #E53935
-set $active-bg-color     #cccccc
-set $active-text-color   #262324
+# COLORS FOR WINDOW BORDER
 
 # WINDOW COLORS
 #                       border              background         text                 indicator 
-client.focused          $bg-color           $bg-color          $text-color          $bg-color
-client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.focused          $bar-color          $bg-color          $text-color          $bg-color
+client.unfocused        $bar-color          $inactive-bg-color $inactive-text-color $bg-color
 client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color $bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
