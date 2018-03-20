@@ -1,0 +1,23 @@
+rofi.combi-modi:    drun,ssh
+rofi.font:          Ubuntu 18
+rofi.modi:          drun
+rofi.lines:         5
+rofi.columns:       1
+rofi.opacity:       85
+rofi.bw:            0
+rofi.fullscreen:    true
+rofi.location:      2
+
+rofi.hide-scrollbar: true
+
+rofi.padding:       250
+
+rofi.color-enabled  true
+! State:           ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
+rofi.color-normal: #262324,  #cccccc,  #262324,  #565354,  #cccccc
+rofi.color-urgent: #262324,  #cccccc,  #262324,  #565354,  #cccccc
+rofi.color-active: #262324,  #cccccc,  #262324,  #565354,  #cccccc
+
+!                 ´background´,  ´border´,     `separator`
+rofi.color-window: #262324,      #ffffff,      #262324
+

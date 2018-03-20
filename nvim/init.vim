@@ -186,7 +186,6 @@ map <C-\> :NERDTreeToggle<CR>
 " Colorscheme configuration
 " Syntax highlighting
 syntax on
-colorscheme dracula
 let loaded_matchparen = 1
 
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#dddddd guibg=#333333

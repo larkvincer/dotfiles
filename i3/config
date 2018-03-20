@@ -6,7 +6,7 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 2
 for_window [class="albert"] border pixel 0
 smart_gaps on
-gaps inner 4
+gaps inner 7
 
 font pango: Ubuntu 10
 
@@ -151,6 +151,8 @@ bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h.png' -e 'mkdir -p ~/Pictures/screens
 bindsym $mod + x exec i3lock -c 475263
 # suspend handler
 bindsym XF86Suspend exec i3lock --color 475263
+# rofi
+bindsym ctrl + space exec rofi -show
 
 # BIND CERTAIN WINDOWS TO WORKSPACES
 for_window [class="TelegramDesktop"] floating enable, move container to workspace $workspace4, resize set 450 550, workspace $workspace4
@@ -186,7 +188,7 @@ bar {
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
-exec_always albert
+# exec_always albert
 exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
 exec_always --no-startup-id nm-applet
