@@ -56,7 +56,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # TOGGLE TILING / FLOATING
-bindsym $mod+shift+space floating toggle
+bindsym $mod+shift+p floating toggle
 
 # CHANGE FOCUS BETWEEN TILING / FLOATING WINDOWS
 bindsym $mod+space focus mode_toggle
@@ -176,11 +176,11 @@ bar {
   position top
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
-    background $bar-color
-    #type                border             background         text
-    focused_workspace    $active-bg-color   $active-bg-color   $active-text-color
-    inactive_workspace   $bar-color         $bar-color         $inactive-text-color
-    urgent_workspace     $urgent-bg-color   $urgent-bg-color   $text-color
+     background $bar-color
+    # type                border             background         text
+     focused_workspace    $active-bg-color   $active-bg-color   $active-text-color
+     inactive_workspace   $bar-color         $bar-color         $inactive-text-color
+     urgent_workspace     $urgent-bg-color   $urgent-bg-color   $text-color
   }
 }
 
@@ -190,7 +190,7 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
 # exec_always albert
 exec --no-startup-id nitrogen --restore
-exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:win_space_toggle'
 exec_always --no-startup-id nm-applet
 exec ~/.screenlayout/Default.sh
 exec --no-startup-id volumeicon
