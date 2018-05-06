@@ -1,23 +1,25 @@
-rofi.combi-modi:    drun,ssh
-rofi.font:          Ubuntu 18
-rofi.modi:          drun
+rofi.combi-modi:    drun,window
+rofi.font:          Noto Sans 18
+rofi.modi:          combi
 rofi.lines:         5
 rofi.columns:       1
-rofi.opacity:       85
+rofi.match          fuzzy
 rofi.bw:            0
-rofi.fullscreen:    true
-rofi.location:      2
+rofi.show-icons     :true
+rofi.drun-icon-theme:Papirus
+!rofi.padding:       250
+
+rofi.fullscreen: false
+
 
 rofi.hide-scrollbar: true
 
-rofi.padding:       250
 
-rofi.color-enabled  true
-! State:           ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
-rofi.color-normal: #262324,  #cccccc,  #262324,  #565354,  #cccccc
-rofi.color-urgent: #262324,  #cccccc,  #262324,  #565354,  #cccccc
-rofi.color-active: #262324,  #cccccc,  #262324,  #565354,  #cccccc
+! State:           ´bg´,        ´fg´,     ´bgalt´,    ´hlbg´,   ´hlfg´
+rofi.color-normal: #002E3440,  #ECEFF4,  #002E3440,  #99ECEFF4,  #2E3440
+rofi.color-urgent: #002E3440,  #ECEFF4,  #002E3440,  #99ECEFF4,  #2E3440
+rofi.color-active: #002E3440,  #ECEFF4,  #002E3440,  #99ECEFF4,  #2E3440
 
-!                 ´background´,  ´border´,     `separator`
-rofi.color-window: #262324,      #ffffff,      #262324
+!                  ´background´, ´border´, ´separator´
+rofi.color-window: #dd2E3440,      #00002b36,  #00002b36
 
