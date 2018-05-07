@@ -20,6 +20,9 @@ Plug 'kien/ctrlp.vim'
 " Support for easily toggling comments.
 Plug 'tpope/vim-commentary'
 
+" Surround with stuff
+Plug 'tpope/vim-surround'
+
 " Lint engine
 Plug 'w0rp/ale'
 
@@ -80,7 +83,6 @@ set noswapfile " They're just annoying. Who likes them?
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
-au CursorHold * checktime  
 
 " Make search more sane
 set ignorecase " case insensitive search
@@ -147,11 +149,12 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
+if exists('g:loaded_webdevicons')
+	call webdevicons#refresh()
+endif
 
 " Syntax highlighting
 syntax on
-set list
-set listchars=tab:——
 set number
 set mouse=a
 filetype plugin on
