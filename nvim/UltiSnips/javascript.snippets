@@ -5,3 +5,46 @@ endsnippet
 snippet logw "Wrap with console.log"
 console.log(${VISUAL: inside console.log});$0
 endsnippet
+
+snippet mons "Create new model for mongoose"
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const $1Schema = new Schema({
+	$2
+});
+
+const $1 = mongoose.model('$1', $1Schema);
+module.exports = $1;
+endsnippet
+
+snippet rq "Require new module"
+const $1 = require('$2');$0
+endsnippet
+
+snippet rtr "Template for separate router."
+const express = require('express');
+const router = express.Router();
+
+$1
+
+module.exports = router;
+endsnippet
+
+snippet desc "Mocha describe template."
+describe('$1', function() {
+	$0
+});
+endsnippet
+
+snippet it "Mocha it template."
+it('$1', function() {
+	$0
+});
+endsnippet
+
+snippet jsd "JS doc"
+/**
+ * @param $0
+ */
+endsnippet

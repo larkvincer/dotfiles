@@ -8,9 +8,6 @@ Plug 'chriskempson/base16-vim'
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
 
-" Icons
-Plug 'ryanoasis/vim-devicons'
-
 " Editor config plugin
 Plug 'editorconfig/editorconfig-vim'
 
@@ -48,6 +45,9 @@ Plug 'airblade/vim-gitgutter'
 " Javascript syntax
 Plug 'jelera/vim-javascript-syntax'
 
+" Jade syntax
+Plug 'digitaltoad/vim-pug'
+
 " Zen coding
 Plug 'mattn/emmet-vim'
 
@@ -83,6 +83,7 @@ set noswapfile " They're just annoying. Who likes them?
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
+au FocusGained,BufEnter * :checktime
 
 " Make search more sane
 set ignorecase " case insensitive search
@@ -136,6 +137,7 @@ let g:UltiSnipsSnippetDirectories=["/home/larkvincer/.config/nvim/UltiSnips"]
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
+" let g:ale_javascript_eslint_executable='/home/larkvincer/.nvm/versions/node/v8.11.1/bin/eslint'
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -149,16 +151,14 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
-if exists('g:loaded_webdevicons')
-	call webdevicons#refresh()
-endif
 
 " Syntax highlighting
 syntax on
+set lcs=tab:——,trail:·,eol:¬
+set list
 set number
 set mouse=a
 filetype plugin on
-
 
 set iminsert=0
 set imsearch=0

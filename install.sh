@@ -11,10 +11,6 @@ sudo apt -y install zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s $(which zsh)
 
-# VS code
-curl -o vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
-sudo apt -y install vscode.deb
-
 # Redshift
 sudo apt -y install redshift
 
