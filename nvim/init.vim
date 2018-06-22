@@ -1,9 +1,12 @@
 " True color
+set termguicolors
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
-Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'ryanoasis/vim-devicons'
+
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
@@ -43,7 +46,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Javascript syntax
-Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim'
 
 " Jade syntax
 Plug 'digitaltoad/vim-pug'
@@ -143,7 +146,11 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Airline config
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline_theme='oceanicnext'
+
+" Devicons config
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " You complete me config
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -153,12 +160,16 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 map <C-\> :NERDTreeToggle<CR>
 
 " Syntax highlighting
-syntax on
-set lcs=tab:——,trail:·,eol:¬
+" Fix for devicons
+if !exists('g:syntax_on') | syntax enable | endif
+set lcs=tab:—-,trail:·,eol:¬
 set list
 set number
 set mouse=a
 filetype plugin on
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 set iminsert=0
 set imsearch=0
