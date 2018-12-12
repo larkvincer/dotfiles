@@ -4,18 +4,28 @@ set termguicolors
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
-Plug 'mhartington/oceanic-next'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
+
+" Draw colors on color hash
+Plug 'lilydjwg/colorizer'
 
 " Editor config plugin
 Plug 'editorconfig/editorconfig-vim'
 
 " Fuzzy finder -- absolutely must have.
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Close buffers, human way
+Plug 'Asheq/close-buffers.vim'
+
+" Move like a god
+Plug 'easymotion/vim-easymotion'
 
 " Support for easily toggling comments.
 Plug 'tpope/vim-commentary'
@@ -25,9 +35,6 @@ Plug 'tpope/vim-surround'
 
 " Lint engine
 Plug 'w0rp/ale'
-
-" Complete engine
-Plug 'valloric/youcompleteme'
 
 " Snippets engine
 Plug 'sirver/ultisnips'
@@ -39,14 +46,14 @@ Plug 'git://github.com/jiangmiao/auto-pairs.git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'jason0x43/vim-js-indent'
+
 " git integration
 Plug 'tpope/vim-fugitive'
-
-" Git difference
 Plug 'airblade/vim-gitgutter'
-
-" Javascript syntax
-Plug 'othree/yajs.vim'
 
 " Jade syntax
 Plug 'digitaltoad/vim-pug'
@@ -60,15 +67,11 @@ Plug 'indenthtml.vim'
 " Initialize plugin system
 call plug#end()
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
 set nocompatible " Fuck VI... That's for grandpas.
-filetype off
+" filetype off
 
 filetype plugin indent on " Filetype auto-detection
+filetype plugin on " Filetype auto-detection
 
 set tabstop=2
 set shiftwidth=2
@@ -86,7 +89,8 @@ set noswapfile " They're just annoying. Who likes them?
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
-au FocusGained,BufEnter * :checktime
+set updatetime=250
+au CursorHold * checktime
 
 " Make search more sane
 set ignorecase " case insensitive search
@@ -118,18 +122,6 @@ noremap <leader><space> :noh<cr>
 " Plugin settings:
 set noshowmode
 
-" CtrlP configuration
-" Let ctrlp have up to 30 results.
-let g:ctrlp_max_height = 30
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules     " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
 " UltiSnippet configuration
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -137,27 +129,35 @@ let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 let g:UltiSnipsSnippetDirectories=["/home/larkvincer/.config/nvim/UltiSnips"]
 
 " Ale config
+set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
-" let g:ale_javascript_eslint_executable='/home/larkvincer/.nvm/versions/node/v8.11.1/bin/eslint'
-
+let g:ale_completion_enabled = 1
+let g:ale_linter_aliases = {'typescriptreact': 'typescript', 'typescript.tsx': 'typescript'}
+let g:ale_linters= {
+			\'typescript': ['tslint', 'tsserver']
+			\}
+let g:ale_fixers = { 'typescript': ['tslint'], 'typescript.tsx': ['tslint'] }
+let g:ale_linters_explicit = 1
+map <silent> <C-]> :ALEGoToDefinition<CR>
+map <C-'> :ALEFindReferences<CR>
+map <C-i> :ALEHover<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+inoremap <C-space> <C-x><C-o>
 
 " Airline config
-let g:airline_powerline_fonts = 0
-let g:airline_theme='oceanicnext'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Devicons config
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-" You complete me config
-let g:ycm_autoclose_preview_window_after_completion = 1
-
+let g:DevIconsEnableFoldersOpenClose = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
+au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
 
 " Syntax highlighting
 " Fix for devicons
@@ -167,9 +167,9 @@ set list
 set number
 set mouse=a
 filetype plugin on
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+colorscheme base16-tomorrow-night
+set background=dark
+
 
 set iminsert=0
 set imsearch=0
