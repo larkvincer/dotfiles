@@ -41,7 +41,7 @@ Plug 'tpope/vim-surround'
 " Autocompletion engine
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
-" Snippets engine
+" Snappets engine
 Plug 'sirver/ultisnips'
 
 " Brackets autocomplete
@@ -52,9 +52,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'jason0x43/vim-js-indent'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'jason0x43/vim-js-indent'
+Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 " git integration
 Plug 'tpope/vim-fugitive'
@@ -261,6 +264,7 @@ au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | en
 " Fix for devicons
 if !exists('g:syntax_on') | syntax enable | endif
 set lcs=tab:—-,trail:·,eol:¬
+set expandtab
 set list
 set number
 set mouse=a
