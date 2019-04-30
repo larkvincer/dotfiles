@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'chriskempson/base16-vim'
 
 " Make sure you use single quotes
@@ -20,6 +21,9 @@ Plug 'editorconfig/editorconfig-vim'
 " Fuzzy finder -- absolutely must have.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" LaTex
+Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
 " Close buffers, human way
 Plug 'Asheq/close-buffers.vim'
@@ -90,7 +94,7 @@ set noswapfile " They're just annoying. Who likes them?
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
 set updatetime=250
-au CursorHold * checktime
+" au CursorHold * checktime
 
 " Make search more sane
 set ignorecase " case insensitive search
@@ -98,7 +102,7 @@ set smartcase " If there are uppercase letters, become case-sensitive.
 set incsearch " live incremental searching
 set showmatch " live match highlighting
 set hlsearch " highlight matches
-set gdefault " use the `g` flag by default.
+" set gdefault " use the `g` flag by default.
 
 " leader is a key that allows you to have your own "namespace" of keybindings.
 " You'll see it a lot below as <leader>
@@ -134,12 +138,12 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_completion_enabled = 1
-let g:ale_linter_aliases = {'typescriptreact': 'typescript', 'typescript.tsx': 'typescript'}
-let g:ale_linters= {
-			\'typescript': ['tslint', 'tsserver']
-			\}
-let g:ale_fixers = { 'typescript': ['tslint'], 'typescript.tsx': ['tslint'] }
-let g:ale_linters_explicit = 1
+" let g:ale_linter_aliases = {'typescriptreact': 'typescript', 'typescript.tsx': 'typescript'}
+" let g:ale_linters= {
+" 			\'typescript': ['tslint', 'tsserver']
+" 			\}
+" let g:ale_fixers = { 'typescript': ['tslint'], 'typescript.tsx': ['tslint'] }
+" let g:ale_linters_explicit = 1
 map <silent> <C-]> :ALEGoToDefinition<CR>
 map <C-'> :ALEFindReferences<CR>
 map <C-i> :ALEHover<CR>
@@ -155,6 +159,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 
+" Ukranian keymap
+set langmap=~ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ'ХЇЖ;~ABCDEFGHIJKLMNOPQRSTUVWXYZ'{}:,
+			\фисвуапршолдьтщзйкіегмцчня;abcdefghijklmnopqrstuvwxyz
+
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
 au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
@@ -167,8 +175,8 @@ set list
 set number
 set mouse=a
 filetype plugin on
-colorscheme base16-tomorrow-night
-set background=dark
+colorscheme PaperColor
+set background=light
 
 
 set iminsert=0

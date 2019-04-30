@@ -1,5 +1,5 @@
 rofi.combi-modi:    drun,window
-rofi.font:          Noto Sans 18
+rofi.font:          Noto Sans 48
 rofi.modi:          combi
 rofi.lines:         5
 rofi.columns:       1
@@ -7,7 +7,7 @@ rofi.match          fuzzy
 rofi.bw:            0
 rofi.show-icons     :true
 rofi.drun-icon-theme:Papirus
-!rofi.padding:       250
+rofi.padding:       250
 
 rofi.fullscreen: false
 

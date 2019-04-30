@@ -14,7 +14,7 @@ font pango: Ubuntu 10
 floating_modifier $mod
 
 # START A TERMINAL
-bindsym $mod+Return exec gnome-terminal #i3-sensible-terminal gnome-terminal
+bindsym $mod+Return exec alacritty #i3-sensible-terminal gnome-terminal
 
 # KILL FOCUSED WINDOW
 bindsym $mod+Shift+q kill
@@ -171,8 +171,8 @@ set $active-text-color   #262324
 
 # START I3BAR
 bar {
-  font xft: Font Awesome bold 10
-  height 27
+  font xft: Iosevka Nerd Font 10
+  height 70
   position top
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   colors {
