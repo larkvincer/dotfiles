@@ -3,7 +3,7 @@
 set $mod Mod4
 
 # ENABLE GAPS FEATURE
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 4
 for_window [class="albert"] border pixel 0
 smart_gaps on
 gaps inner 7
@@ -160,6 +160,10 @@ for_window [title="Inbox - Wunderlist"] floating enable, move container to works
 
 
 #DECORATION COLORS
+set $border-active       #383C4A
+set $border-inactive     #080C1A
+set $border-indicator    #42A5F5
+
 set $bar-color           #262324
 set $bg-color            #363334
 set $inactive-bg-color   #363334
@@ -170,24 +174,25 @@ set $active-bg-color     #cccccc
 set $active-text-color   #262324
 
 # START I3BAR
-bar {
-  font xft: Iosevka Nerd Font 10
-  height 70
-  position top
-  status_command i3blocks -c ~/.config/i3/i3blocks.conf
-  colors {
-     background $bar-color
-    # type                border             background         text
-     focused_workspace    $active-bg-color   $active-bg-color   $active-text-color
-     inactive_workspace   $bar-color         $bar-color         $inactive-text-color
-     urgent_workspace     $urgent-bg-color   $urgent-bg-color   $text-color
-  }
-}
+# bar {
+#   font xft: Iosevka Nerd Font 10
+#   height 70
+#   position top
+#   status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#   colors {
+#      background $bar-color
+#     # type                border             background         text
+#      focused_workspace    $active-bg-color   $active-bg-color   $active-text-color
+#      inactive_workspace   $bar-color         $bar-color         $inactive-text-color
+#      urgent_workspace     $urgent-bg-color   $urgent-bg-color   $text-color
+#   }
+# }
 
 # STARTUP PROGRAM
 exec --no-startup-id redshift
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
+exec_always --no-startup-id ~/.config/i3/scripts/polybar_launch.sh
 # exec_always albert
 exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id --no-startup-id setxkbmap us,ua -option 'grp:win_space_toggle'
@@ -199,7 +204,8 @@ exec --no-startup-id volumeicon
 
 # WINDOW COLORS
 #                       border              background         text                 indicator 
-client.focused          $bar-color          $bg-color          $text-color          $bg-color
-client.unfocused        $bar-color          $inactive-bg-color $inactive-text-color $bg-color
-client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color $bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
+client.focused          $border-active      $border-active     $text-color          $border-indicator
+client.unfocused        $border-inactive    $border-inactive   $inactive-text-color $border-indicator
+client.focused_inactive $border-inactive    $border-inactive   $inactive-text-color $border-indicator
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $border-indicator
+

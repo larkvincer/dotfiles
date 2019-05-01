@@ -1,0 +1,6 @@
+{
+  "eslint.options": {"configFile": "/home/larkvincer/Documents/elopage/.eslintrc"},
+  "tsserver.reportStyleChecksAsWarnings": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false
+}
