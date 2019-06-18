@@ -2,6 +2,20 @@ snippet log "console.log"
 console.log($1);$0
 endsnippet
 
+snippet rfc "React funciton component."
+import React from 'react';
+
+export function $1() {
+	return (
+		$2
+	);
+}
+endsnippet
+
+snippet pt "Import react prop types library"
+import PropTypes from 'prop-types';
+endsnippet
+
 snippet logw "Wrap with console.log"
 console.log(${VISUAL: inside console.log});$0
 endsnippet
