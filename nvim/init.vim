@@ -4,8 +4,9 @@ set termguicolors
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
-Plug 'ryanoasis/vim-devicons'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
@@ -332,6 +333,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Ukranian keymap
 set langmap=~ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ'ХЇЖ;~ABCDEFGHIJKLMNOPQRSTUVWXYZ'{}:,
 			\фисвуапршолдьтщзйкіегмцчня;abcdefghijklmnopqrstuvwxyz
+=======
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:DevIconsEnableFoldersOpenClose = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
@@ -346,10 +350,12 @@ set list
 set number
 set mouse=a
 filetype plugin on
+let g:gruvbox_italic=1
+hi Comment gui=italic cterm=italic
+hi htmlArg gui=italic cterm=italic
 colorscheme gruvbox
-set background=dark
 set cursorline
-set background=light
+set background=dark
 syntax on
 
 
