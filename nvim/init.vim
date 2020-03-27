@@ -4,12 +4,8 @@ set termguicolors
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
-Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
@@ -20,12 +16,15 @@ Plug 'lilydjwg/colorizer'
 " Editor config plugin
 Plug 'editorconfig/editorconfig-vim'
 
+" Fuzzy finder
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
 " Fuzzy finder -- absolutely must have.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 " LaTex
-Plug 'donRaphaco/neotex', { 'for': 'tex' }
+" Plug 'lervag/vimtex'
 
 " Close buffers, human way
 Plug 'Asheq/close-buffers.vim'
@@ -41,11 +40,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " Autocompletion engine
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
-
-" Snippets engine
-Plug 'sirver/ultisnips'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
@@ -54,16 +49,16 @@ Plug 'git://github.com/jiangmiao/auto-pairs.git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-
 Plug 'othree/yajs.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " git integration
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Jade syntax
-Plug 'digitaltoad/vim-pug'
+" Align columns
+Plug 'junegunn/vim-easy-align'
 
 " Zen coding
 Plug 'mattn/emmet-vim'
@@ -97,6 +92,11 @@ set noswapfile " They're just annoying. Who likes them?
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
 set updatetime=250
+" trigger `autoread` when files changes on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" notification after file change
+autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 " au CursorHold * checktime
 
 " Make search more sane
@@ -121,13 +121,25 @@ nnoremap <C-l> <C-w>l
 " nnoremap / /\v
 " vnoremap / /\v
 
-" Clear match highlighting
-" noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-noremap <leader><space> :noh<cr>
+" Clear match highlighting.
+map <leader><space> :noh<cr>
 
+" Find file in project structure.
+map <leader>s :NERDTreeFind<cr>
+
+" Code search.
+map <leader>p :e#<cr>
+map <leader>f :Clap files<cr>
+map <leader>a :Clap grep<cr>
+map <leader>l :Clap lines<cr>
+map <leader>b :Clap buffers<cr>
+let g:clap_insert_mode_only=1
 
 " Plugin settings:
 set noshowmode
+
+" Vimtex compiler settings
+let g:vimtex_compiler_engine="xelatex"
 
 " UltiSnippet configuration
 let g:UltiSnipsExpandTrigger="<c-k>"
@@ -168,23 +180,11 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -193,10 +193,6 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -270,26 +266,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+" vmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -310,32 +289,9 @@ let g:lightline = {
       \ },
       \ }
 
-
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " Ukranian keymap
 set langmap=~ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ'ХЇЖ;~ABCDEFGHIJKLMNOPQRSTUVWXYZ'{}:,
 			\фисвуапршолдьтщзйкіегмцчня;abcdefghijklmnopqrstuvwxyz
-=======
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-" let g:DevIconsEnableFoldersOpenClose = 1
 
 " NERDTreeToggle configuration
 map <C-\> :NERDTreeToggle<CR>
@@ -353,7 +309,7 @@ filetype plugin on
 let g:gruvbox_italic=1
 hi Comment gui=italic cterm=italic
 hi htmlArg gui=italic cterm=italic
-colorscheme gruvbox
+colorscheme moonfly
 set cursorline
 set background=dark
 syntax on
