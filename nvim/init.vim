@@ -3,9 +3,10 @@ set termguicolors
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
+
 " Themes
-Plug 'morhetz/gruvbox'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'morhetz/gruvbox'
 
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
@@ -13,18 +14,14 @@ Plug 'scrooloose/nerdtree'
 " Draw colors on color hash
 Plug 'lilydjwg/colorizer'
 
+" Icons
+Plug 'ryanoasis/vim-devicons'
+
 " Editor config plugin
 Plug 'editorconfig/editorconfig-vim'
 
 " Fuzzy finder
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-
-" Fuzzy finder -- absolutely must have.
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-
-" LaTex
-" Plug 'lervag/vimtex'
 
 " Close buffers, human way
 Plug 'Asheq/close-buffers.vim'
@@ -45,6 +42,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Brackets autocomplete
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
+" Auto buffer reload if file changed
+Plug 'djoshea/vim-autoread'
+
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -52,10 +52,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/yajs.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'kchmck/vim-coffee-script'
 
 " git integration
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'
 
 " Align columns
 Plug 'junegunn/vim-easy-align'
@@ -90,14 +92,11 @@ set noswapfile " They're just annoying. Who likes them?
 
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
-set autoread " when a file has changed on disk, just load it. Don't ask.
-set updatetime=250
+" set updatetime=250
+" set autoread " when a file has changed on disk, just load it. Don't ask.
 " trigger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
-autocmd FileChangedShellPost *
-      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-" au CursorHold * checktime
 
 " Make search more sane
 set ignorecase " case insensitive search
@@ -106,6 +105,9 @@ set incsearch " live incremental searching
 set showmatch " live match highlighting
 set hlsearch " highlight matches
 " set gdefault " use the `g` flag by default.
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " leader is a key that allows you to have your own "namespace" of keybindings.
 " You'll see it a lot below as <leader>
@@ -134,6 +136,10 @@ map <leader>a :Clap grep<cr>
 map <leader>l :Clap lines<cr>
 map <leader>b :Clap buffers<cr>
 let g:clap_insert_mode_only=1
+let g:clap_popup_border='sharp'
+let g:clap_search_box_border_style='nil'
+let g:clap_current_selection_sign = { 'text': '', "linehl": "ClapCurrentSelection" }
+let g:clap_project_root_markers=['package.json', '.root', '.git', '.git/']
 
 " Plugin settings:
 set noshowmode
@@ -148,25 +154,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 let g:UltiSnipsSnippetDirectories=["/home/larkvincer/.config/nvim/UltiSnips"]
 
 "COC configuration
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
@@ -176,6 +163,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references)
+
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -209,9 +200,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 map gn :bn<cr>
 map gp :bp<cr>
 
-"Tigris parser
-let g:tigris#enabled = 1
-
 " Airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -219,6 +207,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Devicons config
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
+set guifont=Iosevka\ Medium\ Nerd\ Font\ Complete\ 15
+
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -266,16 +257,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" vmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
@@ -297,6 +278,12 @@ set langmap=~ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ'ХЇЖ;~ABCDEF
 map <C-\> :NERDTreeToggle<CR>
 au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
 
+" Enable folding
+" set foldmethod=syntax "syntax highlighting items specify folds
+" set foldcolumn=1 "defines 1 col at window left, to indicate folding
+" let javaScript_fold=1 "activate folding by JS syntax
+" set foldlevelstart=99 "start file with all folds opened
+
 " Syntax highlighting
 " Fix for devicons
 if !exists('g:syntax_on') | syntax enable | endif
@@ -309,10 +296,12 @@ filetype plugin on
 let g:gruvbox_italic=1
 hi Comment gui=italic cterm=italic
 hi htmlArg gui=italic cterm=italic
-colorscheme moonfly
+colorscheme gruvbox
 set cursorline
 set background=dark
-syntax on
+if !exists('g:syntax_on')
+	syntax enable
+endif
 
 
 set iminsert=0
