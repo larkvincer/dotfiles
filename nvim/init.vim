@@ -1,7 +1,8 @@
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
-Plug 'rakr/vim-one'
+Plug 'projekt0n/github-nvim-theme'
+" Explorer
 Plug 'scrooloose/nerdtree'
 " Draw colors on color hash
 Plug 'lilydjwg/colorizer'
@@ -40,12 +41,12 @@ Plug 'mattn/emmet-vim'
 " Initialize plugin system
 call plug#end()
 
-source /home/larkvincer/.config/nvim/init/options.vim
-source /home/larkvincer/.config/nvim/init/keymaps.vim
-source /home/larkvincer/.config/nvim/init/airline.vim
-source /home/larkvincer/.config/nvim/init/coc.vim
-source /home/larkvincer/.config/nvim/init/devicons.vim
-luafile /home/larkvincer/.config/nvim/init/treesitter.lua
+source /home/pavlokuziv/.config/nvim/init/options.vim
+source /home/pavlokuziv/.config/nvim/init/keymaps.vim
+source /home/pavlokuziv/.config/nvim/init/airline.vim
+source /home/pavlokuziv/.config/nvim/init/coc.vim
+source /home/pavlokuziv/.config/nvim/init/devicons.vim
+luafile /home/pavlokuziv/.config/nvim/init/treesitter.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v

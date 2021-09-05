@@ -38,7 +38,15 @@ set mouse=a
 set wrap!
 set cursorline
 
-colorscheme one
+" let g:airline_theme= 'one'
+lua << EOF
+require("github-theme").setup({
+  themeStyle = "light",
+  commentStyle = "italic",
+  functionStyle = "italic",
+})
+EOF
+colorscheme github
 set background=light
 
 set iminsert=0
