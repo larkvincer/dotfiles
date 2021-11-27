@@ -14,7 +14,8 @@ map gp :bp<cr>
 map <leader><space> :noh<cr>
 
 " Find file in project structure.
-map <leader>s :NERDTreeFind<cr>
+map <C-\> :NvimTreeToggle<CR>
+map <leader>s :NvimTreeFindFile<cr>
 
 " Telescope code search.
 map <leader>p :e#<cr>

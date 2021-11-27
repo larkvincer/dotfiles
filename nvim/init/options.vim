@@ -39,23 +39,11 @@ set wrap!
 set cursorline
 
 " let g:airline_theme= 'one'
-lua << EOF
-require("github-theme").setup({
-  themeStyle = "light",
-  commentStyle = "italic",
-  functionStyle = "italic",
-})
-EOF
-colorscheme github
-set background=light
+colorscheme github_light
 
 set iminsert=0
 set imsearch=0
 set encoding=UTF-8
-
-" NERDTreeToggle configuration
-map <C-\> :NERDTreeToggle<CR>
-au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
 
 " Ukranian keymap
 set langmap=~ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ'ХЇЖ;~ABCDEFGHIJKLMNOPQRSTUVWXYZ'{}:,

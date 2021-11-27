@@ -6,7 +6,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gf :call CocAction('format')<CR>
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction-line)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 

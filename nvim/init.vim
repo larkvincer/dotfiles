@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'projekt0n/github-nvim-theme'
 " Explorer
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 " Draw colors on color hash
 Plug 'lilydjwg/colorizer'
 " Icons
@@ -27,9 +27,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'git://github.com/jiangmiao/auto-pairs.git'
 " Auto buffer reload if file changed
 Plug 'djoshea/vim-autoread'
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Lualine
+Plug 'hoob3rt/lualine.nvim'
+Plug 'akinsho/bufferline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 " Syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " git integration
@@ -41,12 +42,15 @@ Plug 'mattn/emmet-vim'
 " Initialize plugin system
 call plug#end()
 
-source /home/pavlokuziv/.config/nvim/init/options.vim
 source /home/pavlokuziv/.config/nvim/init/keymaps.vim
 source /home/pavlokuziv/.config/nvim/init/airline.vim
 source /home/pavlokuziv/.config/nvim/init/coc.vim
 source /home/pavlokuziv/.config/nvim/init/devicons.vim
+source /home/pavlokuziv/.config/nvim/init/options.vim
 luafile /home/pavlokuziv/.config/nvim/init/treesitter.lua
+luafile /home/pavlokuziv/.config/nvim/init/lualine.lua
+luafile /home/pavlokuziv/.config/nvim/init/bufferline.lua
+luafile /home/pavlokuziv/.config/nvim/init/nvimtree.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v
