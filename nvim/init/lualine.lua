@@ -3,10 +3,7 @@ require("github-theme").setup()
 -- Lualine
 require("lualine").setup {
   options = {
-    -- theme = "onedark",
     theme = "github",
-    -- theme = "tokyonight",
-    -- section_separators = {"", ""},
     component_separators = {"", ""},
     icons_enabled = true
   },
