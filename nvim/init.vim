@@ -67,7 +67,6 @@ call plug#end()
 
 source /home/pavlokuziv/.config/nvim/init/keymaps.vim
 source /home/pavlokuziv/.config/nvim/init/airline.vim
-" source /home/pavlokuziv/.config/nvim/init/coc.vim
 source /home/pavlokuziv/.config/nvim/init/devicons.vim
 source /home/pavlokuziv/.config/nvim/init/options.vim
 luafile /home/pavlokuziv/.config/nvim/init/treesitter.lua
