@@ -2,6 +2,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'projekt0n/github-nvim-theme'
+Plug 'Mofiqul/dracula.nvim'
 
 " Explorer
 Plug 'kyazdani42/nvim-tree.lua'
@@ -74,6 +75,7 @@ luafile /home/pavlokuziv/.config/nvim/init/lualine.lua
 luafile /home/pavlokuziv/.config/nvim/init/bufferline.lua
 luafile /home/pavlokuziv/.config/nvim/init/nvimtree.lua
 luafile /home/pavlokuziv/.config/nvim/init/lsp.lua
+luafile /home/pavlokuziv/.config/nvim/init/telescope.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v
