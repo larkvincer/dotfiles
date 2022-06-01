@@ -10,6 +10,8 @@ nnoremap <C-l> <C-w>l
 map gn :bn<cr>
 map gp :bp<cr>
 
+map gt :tabNext<cr>
+
 " Clear match highlighting.
 map <leader><space> :noh<cr>
 

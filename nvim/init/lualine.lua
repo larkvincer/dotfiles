@@ -3,7 +3,7 @@ require("github-theme").setup()
 -- Lualine
 require("lualine").setup {
   options = {
-    theme = "github",
+    theme = "github_light",
     component_separators = {"", ""},
     icons_enabled = true
   },

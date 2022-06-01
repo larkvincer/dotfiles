@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'projekt0n/github-nvim-theme'
 Plug 'Mofiqul/dracula.nvim'
+Plug 'shaunsingh/nord.nvim'
 
 " Explorer
 Plug 'kyazdani42/nvim-tree.lua'
