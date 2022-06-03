@@ -30,14 +30,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " LSP
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Autocompletion engine
@@ -67,16 +70,16 @@ Plug 'mattn/emmet-vim'
 " Initialize plugin system
 call plug#end()
 
-source /home/pavlokuziv/.config/nvim/init/keymaps.vim
-source /home/pavlokuziv/.config/nvim/init/airline.vim
-source /home/pavlokuziv/.config/nvim/init/devicons.vim
-source /home/pavlokuziv/.config/nvim/init/options.vim
-luafile /home/pavlokuziv/.config/nvim/init/treesitter.lua
-luafile /home/pavlokuziv/.config/nvim/init/lualine.lua
-luafile /home/pavlokuziv/.config/nvim/init/bufferline.lua
-luafile /home/pavlokuziv/.config/nvim/init/nvimtree.lua
-luafile /home/pavlokuziv/.config/nvim/init/lsp.lua
-luafile /home/pavlokuziv/.config/nvim/init/telescope.lua
+source /Users/pavlokuziv/.config/nvim/init/keymaps.vim
+source /Users/pavlokuziv/.config/nvim/init/airline.vim
+source /Users/pavlokuziv/.config/nvim/init/devicons.vim
+source /Users/pavlokuziv/.config/nvim/init/options.vim
+luafile /Users/pavlokuziv/.config/nvim/init/treesitter.lua
+luafile /Users/pavlokuziv/.config/nvim/init/lualine.lua
+luafile /Users/pavlokuziv/.config/nvim/init/bufferline.lua
+luafile /Users/pavlokuziv/.config/nvim/init/nvimtree.lua
+luafile /Users/pavlokuziv/.config/nvim/init/lsp.lua
+luafile /Users/pavlokuziv/.config/nvim/init/telescope.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v
