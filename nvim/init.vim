@@ -32,6 +32,7 @@ Plug 'tpope/vim-repeat'
 " LSP
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
