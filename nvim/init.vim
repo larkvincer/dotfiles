@@ -30,6 +30,9 @@ Plug 'mfussenegger/nvim-dap'
 " Formatter
 Plug 'mhartington/formatter.nvim'
 
+" Commenter
+Plug 'terrortylor/nvim-comment'
+
 " LSP
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
@@ -75,6 +78,7 @@ luafile /Users/pavlokuziv/.config/nvim/init/nvimtree.lua
 luafile /Users/pavlokuziv/.config/nvim/init/lsp.lua
 luafile /Users/pavlokuziv/.config/nvim/init/telescope.lua
 luafile /Users/pavlokuziv/.config/nvim/init/formatter.lua
+luafile /Users/pavlokuziv/.config/nvim/init/nvim-comment.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v
