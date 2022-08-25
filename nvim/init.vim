@@ -2,8 +2,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'projekt0n/github-nvim-theme'
-Plug 'Mofiqul/dracula.nvim'
-Plug 'shaunsingh/nord.nvim'
 
 " Explorer
 Plug 'kyazdani42/nvim-tree.lua'
@@ -22,12 +20,15 @@ Plug 'nvim-telescope/telescope.nvim'
 " Close buffers, human way
 Plug 'Asheq/close-buffers.vim'
 
-" Support for easily toggling comments.
-Plug 'tpope/vim-commentary'
-
 " Surround with stuff
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+
+" Debugger
+Plug 'mfussenegger/nvim-dap'
+
+" Formatter
+Plug 'mhartington/formatter.nvim'
 
 " LSP
 Plug 'williamboman/nvim-lsp-installer'
@@ -44,11 +45,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
-" Autocompletion engine
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-" Brackets autocomplete
-" Plug 'git://github.com/jiangmiao/auto-pairs.git'
 " Auto buffer reload if file changed
 Plug 'djoshea/vim-autoread'
 
@@ -65,9 +61,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 
-" Zen coding
-Plug 'mattn/emmet-vim'
-
 " Initialize plugin system
 call plug#end()
 
@@ -81,6 +74,7 @@ luafile /Users/pavlokuziv/.config/nvim/init/bufferline.lua
 luafile /Users/pavlokuziv/.config/nvim/init/nvimtree.lua
 luafile /Users/pavlokuziv/.config/nvim/init/lsp.lua
 luafile /Users/pavlokuziv/.config/nvim/init/telescope.lua
+luafile /Users/pavlokuziv/.config/nvim/init/formatter.lua
 
 " Use sane regex's when searching
 " nnoremap / /\v
