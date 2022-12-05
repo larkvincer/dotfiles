@@ -1,34 +1,5 @@
 local packer = require('packer')
 
--- " Debugger
--- Plug 'mfussenegger/nvim-dap'
--- Plug 'rcarriga/nvim-dap-ui'
--- " Formatter
--- Plug 'mhartington/formatter.nvim'
--- " Commenter
--- Plug 'terrortylor/nvim-comment'
--- " LSP
--- Plug 'williamboman/nvim-lsp-installer'
--- Plug 'neovim/nvim-lspconfig'
--- Plug 'L3MON4D3/LuaSnip'
--- Plug 'glepnir/lspsaga.nvim'
--- Plug 'folke/trouble.nvim'
--- Plug 'folke/lsp-colors.nvim'
--- Plug 'hrsh7th/nvim-cmp'
--- Plug 'hrsh7th/cmp-nvim-lsp'
--- Plug 'saadparwaiz1/cmp_luasnip'
--- Plug 'hrsh7th/cmp-buffer'
--- Plug 'hrsh7th/cmp-path'
--- Plug 'hrsh7th/cmp-cmdline'
--- Plug 'jose-elias-alvarez/null-ls.nvim'
--- " Auto buffer reload if file changed
--- Plug 'djoshea/vim-autoread'
--- " git integration
--- Plug 'tpope/vim-fugitive'
--- Plug 'airblade/vim-gitgutter'
--- Plug 'rhysd/git-messenger.vim'
-
-
 packer.startup(function (use)
   use 'wbthomason/packer.nvim'
 
@@ -65,7 +36,6 @@ packer.startup(function (use)
   use 'glepnir/lspsaga.nvim'
 -- Plug 'folke/trouble.nvim'
 -- Plug 'folke/lsp-colors.nvim'
--- Plug 'saadparwaiz1/cmp_luasnip'
 -- Plug 'jose-elias-alvarez/null-ls.nvim'
 
   -- Autocomplete
@@ -77,6 +47,21 @@ packer.startup(function (use)
 
   -- Commenter
   use 'terrortylor/nvim-comment'
+
+  -- Git integration
+  use 'lewis6991/gitsigns.nvim'
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+  -- Debugger
+  use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use {
+    "microsoft/vscode-js-debug",
+    requires = {"mfussenegger/nvim-dap"},
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile"
+  }
 end
 )
 
