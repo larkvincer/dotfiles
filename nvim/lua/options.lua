@@ -1,10 +1,7 @@
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local opt = vim.opt 
-
+local opt = vim.opt
 
 opt.termguicolors = true
--- cmd "colorscheme github
-
 
 opt.tabstop=2
 opt.shiftwidth=2
@@ -32,19 +29,8 @@ opt.incsearch = true
 opt.showmatch = true
 opt.hlsearch = true
 
--- " autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
--- " autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-
--- set lcs=tab:—-,trail:·,eol:¬
-opt.list = true
 opt.number = true
 opt.mouse="a"
--- set wrap!
--- set cursorline
-
--- let g:airline_theme= 'one'
--- colorscheme github_light
 
 opt.iminsert=0
 opt.imsearch=0

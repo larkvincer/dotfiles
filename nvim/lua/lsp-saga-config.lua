@@ -1,17 +1,68 @@
 local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
-saga.init_lsp_saga {
-  code_action_lightbulb = {
+-- saga.init_lsp_saga {
+--   code_action_lightbulb = {
+--     enable = true,
+--     enable_in_insert = false,
+--     cache_code_action = true,
+--     sign = false,
+--     update_time = 150,
+--     sign_priority = 20,
+--     virtual_text = false,
+--   }
+-- }
+
+saga.setup({
+  code_action = {
+    num_shortcut = true,
+    show_server_name = false,
+    extend_gitsigns = true,
+    keys = {
+      -- string | table type
+      quit = "<Esc>",
+      exec = "<CR>",
+    },
+  },
+  lightbulb = {
+    enable = false,
+    enable_in_insert = true,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = true,
+  },
+  symbol_in_winbar = {
     enable = true,
-    enable_in_insert = false,
-    cache_code_action = true,
-    sign = false,
-    update_time = 150,
-    sign_priority = 20,
-    virtual_text = false,
-  }
-}
+    separator = " ",
+    ignore_patterns={},
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
+  },
+  diagnostic = {
+    on_insert = false,
+    on_insert_follow = false,
+    insert_winblend = 0,
+    show_virt_line = false,
+    show_code_action = true,
+    show_source = true,
+    jump_num_shortcut = true,
+      --1 is max
+    max_width = 0.7,
+    custom_fix = nil,
+    custom_msg = nil,
+    text_hl_follow = false,
+    border_follow = true,
+    keys = {
+      exec_action = "o",
+      quit = "q",
+      go_action = "g"
+    },
+  },
+})
+
 
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide

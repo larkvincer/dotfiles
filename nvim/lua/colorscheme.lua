@@ -1,3 +1,12 @@
 require('github-theme').setup({
-  theme_style = 'light',
+  -- options = {
+  --   styles = {
+  --   }
+  -- }
+  -- function_style = "italic",
+  -- sidebars = {"qf", "vista_kind", "terminal", "packer"},
 })
+
+vim.cmd('colorscheme github_light')
+
+

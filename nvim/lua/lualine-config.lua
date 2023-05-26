@@ -1,11 +1,10 @@
-require("github-theme").setup()
-
 -- Lualine
 require("lualine").setup {
   options = {
-    theme = "github_light",
+    theme = "auto",
     component_separators = {"", ""},
-    icons_enabled = true
+    icons_enabled = true,
+    globalstatus = true
   },
   sections = {
       lualine_a = {'mode'},
