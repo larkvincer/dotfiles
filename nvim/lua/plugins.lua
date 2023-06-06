@@ -34,7 +34,14 @@ packer.startup(function(use)
   
   -- LSP
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents,
+    config = function()
+      require("mason").setup()
+    end
+  }
+  use 'jose-elias-alvarez/null-ls.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind.nvim'
 

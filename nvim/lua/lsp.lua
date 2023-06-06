@@ -1,8 +1,14 @@
-require("nvim-lsp-installer").setup {}
-
--- local luasnip = require("luasnip")
-
 local nvim_lsp = require 'lspconfig'
+local null_ls = require 'null-ls'
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.completion.spell,
+    },
+})
+
 local on_attach = function(_, bufnr)
   --   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   --
