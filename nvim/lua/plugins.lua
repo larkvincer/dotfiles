@@ -2,36 +2,36 @@ local packer = require('packer')
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  
+
   use 'projekt0n/github-nvim-theme'
-  
+
   use 'kyazdani42/nvim-tree.lua'
-  
+
   -- Telescope setup
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
-  
+
   -- Close buffers, human way
   use 'Asheq/close-buffers.vim'
-  
+
   -- Surround with stuff
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
-  
+
   -- Lualine
   use 'hoob3rt/lualine.nvim'
   use 'akinsho/bufferline.nvim'
   use 'kyazdani42/nvim-web-devicons'
-  
+
   -- Syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  
+
   use "lukas-reineke/indent-blankline.nvim"
-  
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use {
@@ -41,10 +41,10 @@ packer.startup(function(use)
       require("mason").setup()
     end
   }
+  use "b0o/schemastore.nvim"
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind.nvim'
-
   use {
     'folke/trouble.nvim',
     requires = "kyazdani42/nvim-web-devicons",
@@ -56,13 +56,15 @@ packer.startup(function(use)
       }
     end
   }
-  
+
   -- Autocomplete
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- Commenter
   use 'terrortylor/nvim-comment'
@@ -85,7 +87,7 @@ packer.startup(function(use)
   use {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
     end
   }

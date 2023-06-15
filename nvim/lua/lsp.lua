@@ -4,8 +4,8 @@ local null_ls = require 'null-ls'
 null_ls.setup({
     sources = {
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.completion.spell,
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.formatting.eslint_d,
     },
 })
 
@@ -45,6 +45,15 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
   }
 end
+
+nvim_lsp.jsonls.setup {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
