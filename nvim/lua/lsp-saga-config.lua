@@ -1,18 +1,6 @@
 local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
--- saga.init_lsp_saga {
---   code_action_lightbulb = {
---     enable = true,
---     enable_in_insert = false,
---     cache_code_action = true,
---     sign = false,
---     update_time = 150,
---     sign_priority = 20,
---     virtual_text = false,
---   }
--- }
-
 saga.setup({
   code_action = {
     num_shortcut = true,
@@ -68,7 +56,11 @@ saga.setup({
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
+
+keymap({"n","v"}, "gd", "<cmd>Lspsaga goto_definition<CR>", { silent = true })
+keymap({"n","v"}, "gt", "<cmd>Lspsaga goto_type_definition<CR>", { silent = true })
+
 
 -- Code action
 keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })

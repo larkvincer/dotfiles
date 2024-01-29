@@ -1,12 +1,6 @@
-require('github-theme').setup({
-  -- options = {
-  --   styles = {
-  --   }
-  -- }
-  -- function_style = "italic",
-  -- sidebars = {"qf", "vista_kind", "terminal", "packer"},
-})
-
-vim.cmd('colorscheme github_light')
+vim.cmd('colorscheme nord')
+vim.g.nord_borders = true
+vim.g.nord_italic = true
+require('nord').set()
 
 

@@ -16,5 +16,6 @@ require('diffview').setup()
 require('dap-config')
 require('align-config')
 require('indent-line-config')
+require('conform-config')
 -- require('copilot').setup {}
 -- require('copilot-config')
